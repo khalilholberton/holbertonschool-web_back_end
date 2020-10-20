@@ -16,7 +16,7 @@ async def task_wait_n(n: int, max_delay: int) -> List[float]:
     task_wait_n
     """
     tyme = [
-        wait_random(max_delay) for i in range(n)
+        task_wait_random(max_delay) for ctr in range(n)
     ]
     tot = []
     for element in asyncio.as_completed(tyme):
