@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
-"""                                                                                      
-coroutine                                                                                
+"""
+coroutine
 """
 import random
 import asyncio
@@ -8,8 +7,8 @@ from typing import Generator
 
 
 async def async_generator() -> Generator[float, None, None]:
-    """                                                                                  
-    coroutine                                                                            
+    """
+    coroutine
     """
     for a in range(10):
         await asyncio.sleep(1)
