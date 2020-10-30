@@ -2,7 +2,7 @@
 """ module """
 import csv
 import math
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 
 
 class Server:
