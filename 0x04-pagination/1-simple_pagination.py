@@ -4,8 +4,7 @@ Simple helper module.
 """
 import csv
 import math
-from typing import List
-from typing import Tuple
+from typing import Tuple, List
 
 
 class Server:
