@@ -36,7 +36,7 @@ class Server:
         else:
             return self.__dataset[a[0]:a[1]]
 
-    def index_range(page: int, page_size: int) -> Tuple[int, int]:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
         """index range"""
         a = page * page_size - page_size
         b = a + page_size
