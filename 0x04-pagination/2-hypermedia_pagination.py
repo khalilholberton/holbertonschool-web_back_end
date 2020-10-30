@@ -45,6 +45,7 @@ class Server:
         return {'page_size': len(data), 'page': page, 'data': data,
                 'next_page': x, 'prev_page': y, 'total_pages': total_p}
 
+
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """index range"""
     a = page * page_size - page_size
