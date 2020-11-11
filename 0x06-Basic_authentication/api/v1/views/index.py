@@ -32,7 +32,7 @@ def unauthorized():
     Return:
       - This endpoint must raise a 401 error by using abort
     """
-    abort(401)
+    return abort(401)
 
 
 @app_views.route('/forbidden', methods=['GET'], strict_slashes=False)
@@ -41,4 +41,4 @@ def forbidden():
     Return:
       - This endpoint must raise a 403 error by using abort
     """
-    abort(403)
+    return abort(403)
