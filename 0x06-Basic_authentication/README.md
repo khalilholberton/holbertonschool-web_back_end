@@ -1,4 +1,4 @@
-# Simple API
+# Simple API holberton school
 
 Simple HTTP API for playing with `User` model.
 
