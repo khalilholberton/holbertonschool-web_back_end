@@ -3,15 +3,13 @@
 Simple Flask app
 """
 from flask import Flask, render_template
-
-
 app = Flask(__name__)
 
 
 @app.route('/')
 def hello():
     """
-    return 0-index template
+    return 0-index.html template
     """
     return render_template('0-index.html')
 
