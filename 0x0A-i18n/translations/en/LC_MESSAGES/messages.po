@@ -19,8 +19,8 @@ msgstr ""
 "Generated-By: Babel 2.9.0\n"
 
 
-msgid "Welcome to Holberton"
-msgstr ""
+msgid "home_title"
+msgstr "Welcome to Holberton"
 
-msgid "Hello world!"
-msgstr ""
+msgid "home_header"
+msgstr "Hello world"
