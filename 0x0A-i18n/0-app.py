@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-"""
-Simple Flask app
-"""
+""" Simple Flask app """
+
 from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route("/", methods=["GET"], strict_slashes=False)
 def hello():
     """
     return 0-index.html template
