@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Simple Flask app """
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, g
 from flask_babel import Babel, gettext
 
 
@@ -30,7 +30,7 @@ def hello():
     """
     return 1-index.html template
     """
-    return render_template('4-index.html')
+    return render_template('5-index.html')
 
 
 @babel.localeselector
