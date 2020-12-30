@@ -49,10 +49,15 @@ def get_user():
     """
     Ths function returns a user dictionary
     """
-    userID = request.GET.get('login_as')  # if val doesn't exist, returns None
-    if int(userID) in users:
-        return users[int(user)]
-    return None
+    userID = request.args.get('login_as')  # if val doesn't exist, returns None
+
+    try:
+        if userID and int(userID) in users:
+            return users[int(userID)]
+        else:
+            return None
+    except Exception:
+        return None
 
 
 @app.before_request
