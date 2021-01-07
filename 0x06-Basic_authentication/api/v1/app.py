@@ -3,6 +3,7 @@
 Route module for the API
 """
 from os import getenv
+from api.v1.auth.auth import Auth
 from api.v1.views import app_views
 from flask import Flask, jsonify, abort, request
 from flask_cors import (CORS, cross_origin)
@@ -53,6 +54,7 @@ def forbidden_to_authenticate(error) -> str:
     """ Error handler for 403 status code
     """
     return jsonify({"error": "Forbidden"}), 403
+
 
 if __name__ == "__main__":
     host = getenv("API_HOST", "0.0.0.0")
