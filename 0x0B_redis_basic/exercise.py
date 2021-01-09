@@ -27,3 +27,13 @@ class Cache():
         randomKEY = str(uuid.uuid4())
         self._redis.set(randomKEY, data)
         return randomKEY
+
+    def get(self, key: str,
+            fn: Optional[Callable] = None) -> Union[str, bytes, int, float]:
+        """
+        get() method
+        """
+        val = self._redis.get(key)
+        if fn:
+            return fn(val)
+        return val
