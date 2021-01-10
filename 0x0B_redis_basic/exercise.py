@@ -37,3 +37,14 @@ class Cache():
         if fn:
             return fn(val)
         return val
+
+    def get_str(self, key):
+        """
+        get_str() method
+        """
+        val = self._redis.get(key)
+        return val.decode("utf-8")
+
+    def get_int(self, key):
+        val = self._redis.get(key)
+        return int(val)
