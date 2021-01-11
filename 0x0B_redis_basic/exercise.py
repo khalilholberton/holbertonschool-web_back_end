@@ -45,6 +45,24 @@ def call_history(method: Callable) -> Callable:
     return wrapper
 
 
+def replay(method: Callable):
+    """
+    replay
+    """
+    method_key = method.__qualname__
+    meth_inputs = "".join([key, ":inputs"])
+    meth_outputs = "".join([key, ":outputs"])
+    ctr = method.__self__.get(method_key)
+    ctr = ctr.decode("utf-8")
+    print("{} was called {} times:".format(method_key, ctr.decode("utf-8")))
+    inp_list = method.__self__._redis.lrange(i, 0, -1)
+    outp_list = method.__self__._redis.lrange(o, 0, -1)
+    d = list(zip(inp_list, outp_list))
+    for x, y in d:
+        attr, res = x.decode("utf-8"), y.decode("utf-8")
+        print("{}(*{}) -> {}".format(method_key, attr), res)
+
+
 class Cache():
     """
     class Cache
