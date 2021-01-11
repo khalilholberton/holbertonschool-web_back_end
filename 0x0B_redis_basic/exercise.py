@@ -61,7 +61,7 @@ def replay(method: Callable):
     d = list(zip(inp_list, outp_list))
     for x, y in d:
         attr, res = x.decode("utf-8"), y.decode("utf-8")
-        print("{}(*{}) -> {}".format(method_key, attr), res)
+        print(f"{method_key}(*{attr}) -> {res}")
 
 
 class Cache():
