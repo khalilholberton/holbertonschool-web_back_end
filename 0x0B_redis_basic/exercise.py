@@ -50,8 +50,8 @@ def replay(method: Callable):
     replay
     """
     method_key = method.__qualname__
-    meth_inputs = "".join([key, ":inputs"])
-    meth_outputs = "".join([key, ":outputs"])
+    meth_inputs = method_key + ":inputs"
+    meth_outputs = method_key + ":outputs"
     rd = method.__self__.redis
     ctr = rd.get(method_key).decode("utf-8")
     print("{} was called {} times:".format(method_key, ctr))
