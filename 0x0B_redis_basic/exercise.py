@@ -49,12 +49,11 @@ def replay(method: Callable):
     """
     replay
     """
-    rd = redis.Redis()
     method_key = method.__qualname__
     meth_inputs = "".join([key, ":inputs"])
     meth_outputs = "".join([key, ":outputs"])
-    ctr = method.__self__.redis
-    ctr = ctr.get(method_key).decode("utf-8")
+    rd = method.__self__.redis
+    ctr = rd.get(method_key).decode("utf-8")
     print(f"{method_key} was called {ctr} times:")
     inp_list = redis.lrange(meth_inputs, 0, -1)
     outp_list = redis.lrange(meth_outputs, 0, -1)
