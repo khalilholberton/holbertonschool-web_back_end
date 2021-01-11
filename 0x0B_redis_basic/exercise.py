@@ -54,13 +54,13 @@ def replay(method: Callable):
     meth_outputs = "".join([key, ":outputs"])
     rd = method.__self__.redis
     ctr = rd.get(method_key).decode("utf-8")
-    print(f"{method_key} was called {ctr} times:")
+    print("{} was called {} times:".format(method_key, ctr))
     inp_list = redis.lrange(meth_inputs, 0, -1)
     outp_list = redis.lrange(meth_outputs, 0, -1)
     d = list(zip(inp_list, outp_list))
     for x, y in d:
         attr, res = x.decode("utf-8"), y.decode("utf-8")
-        print(f"{method_key}(*{attr}) -> {res}")
+        print(f"{}(*{}) -> {}".format(method_key, attr, res))
 
 
 class Cache():
