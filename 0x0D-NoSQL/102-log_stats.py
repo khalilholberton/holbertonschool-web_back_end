@@ -1,30 +1,33 @@
 #!/usr/bin/env python3
 """nginx_log"""
-from pymongo import MongoClient
+
+
+def nginx_log() -> None:
+    """  adds the top 10 of the most present IPs  """
+
+    methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
+
+    client = MongoClient('mongodb://127.0.0.1:27017')
+    nginx = client.logs.nginx
+
+    print("{} logs".format(nginx.count_documents({})))
+    print("Methods:")
+    for m in methods:
+        print("\tmethod {}: {}".format(m, nginx.count_documents({'method': m})))
+    print("{} status check".
+          format(nginx.count_documents({'method': 'GET', 'path': '/status'})))
+    print("IPs:")
+    num_ips = nginx.aggregate([
+        { "$group": {  "_id" : "$ip", "total" : { "$sum": 1 }  } },
+        { "$sort": { "total": -1 } }
+    ])
+    count = 0
+    for s_ip in num_ips:
+        if count == 10:
+            break
+        print("\t{}: {}".format(s_ip.get('_id'),s_ip.get('total')))
+        count = count + 1
+
 
 if __name__ == "__main__":
-    client = MongoClient('mongodb://127.0.0.1:27017')
-    nginx_collection = client.logs.nginx
-    number = nginx_collection.count()
-
-    num_get = nginx_collection.find({"method": "GET"}).count()
-    num_post = nginx_collection.find({"method": "POST"}).count()
-    num_put = nginx_collection.find({"method": "PUT"}).count()
-    num_patch = nginx_collection.find({"method": "PATCH"}).count()
-    num_delete = nginx_collection.find({"method": "DELETE"}).count()
-    num_status = nginx_collection.find(
-        {"method": "GET", "path": "/status"}).count()
-    num_ips = nginx_collection.aggregate([
-            {"$group": {"_id": "$ip", "total": {"$sum": 1}}},
-            {"$sort": {"total": -1}},{"$limit": 10}])
-    print("{} logs".format(number))
-    print("Methods:")
-    print("\tmethod GET: {}".format(num_get))
-    print("\tmethod POST: {}".format(num_post))
-    print("\tmethod PUT: {}".format(num_put))
-    print("\tmethod PATCH: {}".format(num_patch))
-    print("\tmethod DELETE: {}".format(num_delete))
-    print("{} status check".format(num_status))
-    print("IPs:")
-    for ip in num_ips:
-        print("\t{}: {}".format(ip.get("_id"), ip.get("total")))
+    nginx_log()
