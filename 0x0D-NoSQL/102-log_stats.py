@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """nginx_log"""
 
+from pymongo import MongoClient
+
 
 def nginx_log() -> None:
     """  adds the top 10 of the most present IPs  """
