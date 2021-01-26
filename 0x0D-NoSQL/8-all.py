@@ -9,7 +9,8 @@ def list_all(mongo_collection):
     """
     list all documents in the collection mymongo
     """
-    if not mongo_collection:
-        return []
     all_doc = mongo_collection.find()
-    return [d for d in all_doc]
+    if all_doc:
+        return all_doc
+    else:
+        return []
