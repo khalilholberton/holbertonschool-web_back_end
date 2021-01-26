@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-this module contains list_all
+lists all documents in a collection
 """
 
 
 def list_all(mongo_collection):
     """
-    list_all
+    lists all documents in a collection
     """
-    all_doc = mongo_collection.find()
-    return all_doc if all_doc else []
+    doc = mongo_collection.find()
+    return doc if doc else []
