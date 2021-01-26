@@ -2,7 +2,6 @@
 """
 This module contains the func list_all
 """
-import pymongo
 
 
 def list_all(mongo_collection):
