@@ -5,7 +5,7 @@ log_infos
 from pymongo import MongoClient
 
 
-def Nginx_logs():
+def nginx_logs():
     """
     log_infos provides some stats about Nginx logs stored in MongoDB
     """
@@ -25,4 +25,4 @@ def Nginx_logs():
 
 
 if __name__ == "__main__":
-    Nginx_logs()
+    nginx_logs()
