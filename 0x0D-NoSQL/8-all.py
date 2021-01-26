@@ -8,8 +8,5 @@ def list_all(mongo_collection):
     """
     list_all
     """
-    docs = mongo_collection.find()
-    if docs:
-        return docs
-    else:
-        return []
+    all_doc = mongo_collection.find()
+    return all_doc if all_doc else []
