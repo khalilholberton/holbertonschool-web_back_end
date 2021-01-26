@@ -19,6 +19,7 @@ def nginx_log() -> None:
     print("{} status check".
           format(nginx.count_documents({'method': 'GET', 'path': '/status'})))
     print("IPs:")
+    all_ip = []
     num_ips = nginx.aggregate([
         { "$group": {  "_id" : "$ip", "total" : { "$sum": 1 }  } },
         { "$sort": { "total": -1 } }
