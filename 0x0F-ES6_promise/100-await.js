@@ -7,9 +7,9 @@ export default async function asyncUploadUser() {
   try {
     usr = await createUser();
     image = await uploadPhoto();
-  } catch (error) {
-    photoval = null;
-    userval = null;
+  } catch (e) {
+    image = null;
+    usr = null;
   }
   return { photo: image, user: usr };
 }
