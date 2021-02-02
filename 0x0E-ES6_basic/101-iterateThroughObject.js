@@ -1,4 +1,4 @@
 export default function iterateThroughObject(reportWithIterator) {
-  return reportWithIterator.join(' | ');
-
+  const ob = reportWithIterator.join(' | ');
+  return ob;
 }
